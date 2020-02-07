@@ -4622,8 +4622,8 @@
     }
 
 
-    var passiveListener = Support.passiveListener ? { passive: true } : false;
-    var passiveListenerCapture = Support.passiveListener ? { passive: true, capture: true } : true;
+    var passiveListener = Support.passiveListener ? { passive: false } : false;
+    var passiveListenerCapture = Support.passiveListener ? { passive: false, capture: true } : true;
     var activeListener = Support.passiveListener ? { passive: false } : false;
     var activeListenerCapture = Support.passiveListener ? { passive: false, capture: true } : true;
 
@@ -4680,12 +4680,12 @@
       app.on('touchstart', handleTouchStart);
       app.on('touchmove', handleTouchMove);
       app.on('touchend', handleTouchEnd);
-      doc.addEventListener('touchcancel', handleTouchCancel, { passive: true });
+      doc.addEventListener('touchcancel', handleTouchCancel, { passive: false });
     } else if (params.activeState) {
       app.on('touchstart', handleMouseDown);
       app.on('touchmove', handleMouseMove);
       app.on('touchend', handleMouseUp);
-      doc.addEventListener('pointercancel', handleMouseUp, { passive: true });
+      doc.addEventListener('pointercancel', handleMouseUp, { passive: false });
     }
     doc.addEventListener('contextmenu', function (e) {
       if (params.disableContextMenu && (Device.ios || Device.android || Device.cordova)) {
@@ -5771,13 +5771,13 @@
     }
 
     function attachEvents() {
-      var passiveListener = (app.touchEvents.start === 'touchstart' && Support.passiveListener) ? { passive: true, capture: false } : false;
+      var passiveListener = (app.touchEvents.start === 'touchstart' && Support.passiveListener) ? { passive: false, capture: false } : false;
       $el.on(app.touchEvents.start, handleTouchStart, passiveListener);
       app.on('touchmove:active', handleTouchMove);
       app.on('touchend:passive', handleTouchEnd);
     }
     function detachEvents() {
-      var passiveListener = (app.touchEvents.start === 'touchstart' && Support.passiveListener) ? { passive: true, capture: false } : false;
+      var passiveListener = (app.touchEvents.start === 'touchstart' && Support.passiveListener) ? { passive: false, capture: false } : false;
       $el.off(app.touchEvents.start, handleTouchStart, passiveListener);
       app.off('touchmove:active', handleTouchMove);
       app.off('touchend:passive', handleTouchEnd);
@@ -13921,7 +13921,7 @@
         $el.transform('');
       }
 
-      var passive = Support.passiveListener ? { passive: true } : false;
+      var passive = Support.passiveListener ? { passive: false } : false;
       if (popup.params.swipeToClose) {
         $el.on(app.touchEvents.start, handleTouchStart, passive);
         app.on('touchmove', handleTouchMove);
@@ -15156,7 +15156,7 @@
         sheet.setSwipeStep(true);
       }
 
-      var passive = Support.passiveListener ? { passive: true } : false;
+      var passive = Support.passiveListener ? { passive: false } : false;
       if (sheet.params.swipeToClose || sheet.params.swipeToStep) {
         $el.on(app.touchEvents.start, handleTouchStart, passive);
         app.on('touchmove', handleTouchMove);
@@ -16325,7 +16325,7 @@
         });
       }
 
-      var passiveListener = app.support.passiveListener ? { passive: true } : false;
+      var passiveListener = app.support.passiveListener ? { passive: false } : false;
 
       app.on('touchstart', function (e) {
         if (Swipeout.el) {
@@ -17460,7 +17460,7 @@
           $labelEl = undefined;
         }
       }
-      var passiveListener = app.support.passiveListener ? { passive: true } : false;
+      var passiveListener = app.support.passiveListener ? { passive: false } : false;
       index.attachEvents = function attachEvents() {
         $el.parents('.tab').on('tab:show', handleResize);
         $el.parents('.page').on('page:reinit', handleResize);
@@ -18391,7 +18391,7 @@
     $el.addClass('panel-resizable');
 
     // Add Events
-    var passive = Support.passiveListener ? { passive: true } : false;
+    var passive = Support.passiveListener ? { passive: false } : false;
 
     panel.$el.on(app.touchEvents.start, '.panel-resize-handler', handleTouchStart, passive);
     app.on('touchmove:active', handleTouchMove);
@@ -20450,14 +20450,14 @@
         toggle.emit('local::change toggleChange', toggle);
       }
       toggle.attachEvents = function attachEvents() {
-        var passive = Support.passiveListener ? { passive: true } : false;
+        var passive = Support.passiveListener ? { passive: false } : false;
         $el.on(app.touchEvents.start, handleTouchStart, passive);
         app.on('touchmove', handleTouchMove);
         app.on('touchend:passive', handleTouchEnd);
         toggle.$inputEl.on('change', handleInputChange);
       };
       toggle.detachEvents = function detachEvents() {
-        var passive = Support.passiveListener ? { passive: true } : false;
+        var passive = Support.passiveListener ? { passive: false } : false;
         $el.off(app.touchEvents.start, handleTouchStart, passive);
         app.off('touchmove', handleTouchMove);
         app.off('touchend:passive', handleTouchEnd);
@@ -37907,7 +37907,7 @@
       tooltip.attachEvents = function attachEvents() {
         $el.on('transitionend', handleTransitionEnd);
         if (Support.touch) {
-          var passive = Support.passiveListener ? { passive: true } : false;
+          var passive = Support.passiveListener ? { passive: false } : false;
           $targetEl.on(app.touchEvents.start, handleTouchStart, passive);
           app.on('touchmove', handleTouchMove);
           app.on('touchend:passive', handleTouchEnd);
@@ -37919,7 +37919,7 @@
       tooltip.detachEvents = function detachEvents() {
         $el.off('transitionend', handleTransitionEnd);
         if (Support.touch) {
-          var passive = Support.passiveListener ? { passive: true } : false;
+          var passive = Support.passiveListener ? { passive: false } : false;
           $targetEl.off(app.touchEvents.start, handleTouchStart, passive);
           app.off('touchmove', handleTouchMove);
           app.off('touchend:passive', handleTouchEnd);
@@ -39409,7 +39409,7 @@
         self.modules['sb-spectrum'].update(self);
       }
 
-      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: true, capture: false } : false;
+      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: false, capture: false } : false;
 
       self.$el.on(app.touchEvents.start, handleTouchStart, passiveListener);
       app.on('touchmove:active', handleTouchMove);
@@ -39522,7 +39522,7 @@
         self.modules['hs-spectrum'].update(self);
       }
 
-      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: true, capture: false } : false;
+      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: false, capture: false } : false;
 
       self.$el.on(app.touchEvents.start, handleTouchStart, passiveListener);
       app.on('touchmove:active', handleTouchMove);
@@ -39669,7 +39669,7 @@
         self.modules.wheel.update(self);
       }
 
-      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: true, capture: false } : false;
+      var passiveListener = app.touchEvents.start === 'touchstart' && app.support.passiveListener ? { passive: false, capture: false } : false;
 
       self.$el.on(app.touchEvents.start, handleTouchStart, passiveListener);
       app.on('touchmove:active', handleTouchMove);

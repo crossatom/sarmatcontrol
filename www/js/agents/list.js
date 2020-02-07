@@ -3,6 +3,7 @@ console.log('a')
 let lst;
 
 function agentsListRequest() {
+	app.dialog.preloader('Загрузка контрагентов')
 	app.request.json('https://sc-backend.000webhostapp.com/api2/contragents.json', {}, agentsListOk, agentsListErr)
 	app.dialog.close()
 }
@@ -41,7 +42,11 @@ function agentsListOk(e) {
 						'</div>' +
 					'</a>' +
 				'</li>',
-			height: 63
+			height: app.theme === 'ios' ? 44 : (app.theme === 'md' ? 73 : 46),
+			listHeight: 63 * list.length,
+			rowsBefore: 20,
+			rowsAfter: 30,
+			rowsPerScreen: 12
 		})
 	}
 } 
