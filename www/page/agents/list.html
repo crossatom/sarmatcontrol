@@ -1,0 +1,42 @@
+<div class="page" data-page="notes_list">
+	<div class="navbar">
+		<div class="navbar-bg"></div>
+		<div class="navbar-inner">
+			<div class="left">
+				<a href="#" class="link panel-open" data-panel=".panel-left">
+					<i class="f7-icons">list_bullet</i>
+				</a>
+			</div>
+			<div class="title">Контрагенты</div>
+			<div class="right">
+				<a href="/agents/add/" class="link">
+					<i class="f7-icons">person_badge_plus_fill</i>
+				</a>
+			</div>
+
+			<div class="subnavbar">
+				<form data-search-container=".virtual-list" data-search-item="li" data-search-in=".item-title" class="searchbar searchbar-init">
+					<div class="searchbar-inner">
+						<div class="searchbar-input-wrap">
+							<input type="search" placeholder="Поиск...">
+							<i class="searchbar-icon"></i>
+							<span class="input-clear-button"></span>
+						</div>
+						<div class="searchbar-disable-button">Отмена</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="searchbar-backdrop"></div>
+	<div class="page-content">
+		<div class="list simple-list searchbar-not-found">
+			<ul>
+				<li>Не найдено</li>
+			</ul>
+		</div>
+		<div class="list virtual-list media-list searchbar-found">
+			<!-- Autocomplete -->
+		</div>
+	</div>
+</div>

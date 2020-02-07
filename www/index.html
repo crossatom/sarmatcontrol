@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	
+		<!-- Link -->
+		<link rel="stylesheet" href="css/icons.css">
+		<link rel="stylesheet" href="framework7/css/framework7.bundle.min.css">
+		<link rel="stylesheet" href="css/app.css">
+
+		<!-- Etc -->
+		<title>Sarmat Control</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- Main view -->
+			<div class="view view-main">
+				<div class="panel panel-left color-theme-dark">
+					<div class="block-title">Меню</div>
+					<div class="list">
+						<ul>
+							<li class="item-content">
+								<div class="item-inner">
+									<a href="/agents/list/" class="link">Контрагенты</a>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<a href="/notes/list/" class="link">Накладные</a>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<a href="/products/list/" class="link">Товары</a>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<a href="/admin/" class="link">Админ-панель</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Main page -->
+				<div class="page" data-page="home">
+					<!-- Navbar -->
+					<div class="navbar">
+						<div class="navbar-bg"></div>
+						<div class="navbar-inner">
+							<div class="title">Sarmat Control</div>
+						</div>
+					</div>
+
+					<div class="page-content">
+						<div class="block">Вход в систему</div>
+						<div class="list">
+							<ul>
+								<li class="item-content item-input">
+									<div class="item-media">
+										<i class="f7-icons">person_circle_fill</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-input-wrap">
+											<input type="text" placeholder="Логин" id="l_lgn">
+											<span class="input-clear-button"></span>
+										</div>
+									</div>
+								</li>
+								<li class="item-content item-input">
+									<div class="item-media">
+										<i class="f7-icons">asterisk_circle_fill</i>
+									</div>
+									<div class="item-inner">
+										<div class="item-input-wrap">
+											<input type="password" placeholder="Пароль" id="l_psw">
+											<span class="input-clear-button"></span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<div class="col-10"></div>
+							<div class="col-80">
+								<button id="l_go" class="button button-large button-fill">Войти</button>
+							</div>
+							<div class="col-10"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Script -->
+		<script type="text/javascript" src="framework7/js/framework7.bundle.min.js"></script>
+		<script type="text/javascript" src="js/routes.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/agents/list.js"></script>
+	</body>
+</html>
