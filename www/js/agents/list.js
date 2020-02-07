@@ -1,5 +1,3 @@
-console.log('a')
-
 let lst;
 
 function agentsListRequest() {
@@ -34,7 +32,7 @@ function agentsListOk(e) {
 			},
 			itemTemplate: 
 				'<li>' +
-					'<a href="#" class="item-link item-content">' +
+					'<a href="#" class="item-link item-content" onclick="agentGet({{id}})">' +
 						'<div class="item-inner">' +
 							'<div class="item-title-row">' +
 								'<div class="item-title">{{name}}</div>' +
@@ -53,4 +51,11 @@ function agentsListOk(e) {
 
 function agentsListErr() {
 	app.dialog.confirm('Ошибка при подключении к серверу. Повторить попытку?', agentsListRequest, () => {})
+}
+
+function agentGet(_id) {
+	console.log('HANDLED!')
+	localStorage.agentId = _id
+	app.dialog.preloader('Загрузка накладных')
+	app.views.main.router.navigate('/notes/list/')
 }

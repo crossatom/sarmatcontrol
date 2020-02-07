@@ -31,7 +31,6 @@ function loginOk(e) {
 				if($$('#l_psw').val() === e[i].password) {
 					app.dialog.close()
 					app.views.main.router.navigate('/agents/list/')
-					agentsListRequest()
 					return
 				}
 			}
