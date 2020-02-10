@@ -3,10 +3,10 @@ let lst;
 function agentsListRequest() {
 	app.dialog.preloader('Загрузка контрагентов')
 	app.request.json('https://sc-backend.000webhostapp.com/api2/contragents.json', {}, agentsListOk, agentsListErr)
-	app.dialog.close()
 }
 
 function agentsListOk(e) {
+	app.dialog.close()
 	if(!(e instanceof Object))
 		app.dialog.confirm('Некорректный ответ от сервера. Повторить попытку?', agentsListRequest, () => {})
 	else {
